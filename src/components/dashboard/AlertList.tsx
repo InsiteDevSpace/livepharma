@@ -1,3 +1,4 @@
+
 import { useNotifications, Notification } from "@/contexts/NotificationContext";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,22 +8,26 @@ import { X } from "lucide-react";
 interface AlertListProps {
   limit?: number;
   showActions?: boolean;
+  notifications?: Notification[]; // Add this prop to accept filtered notifications
 }
 
-const AlertList = ({ limit, showActions = true }: AlertListProps) => {
-  const { notifications, markAsRead, dismissNotification } = useNotifications();
+const AlertList = ({ limit, showActions = true, notifications }: AlertListProps) => {
+  const { notifications: allNotifications, markAsRead, dismissNotification } = useNotifications();
+  
+  // Use provided notifications or fall back to all notifications
+  const notificationsToUse = notifications || allNotifications;
   
   // Apply limit if specified
   const displayNotifications = limit
-    ? notifications.slice(0, limit)
-    : notifications;
+    ? notificationsToUse.slice(0, limit)
+    : notificationsToUse;
 
   // Function to get badge variant based on notification type
-  const getBadgeVariant = (type: Notification["type"]) => {
+  const getBadgeVariant = (type: Notification["type"]): "default" | "destructive" | "outline" | "secondary" => {
     switch (type) {
       case "danger": return "destructive";
-      case "warning": return "warning";
-      case "info": default: return "secondary";
+      case "warning": return "secondary"; // Changed from "warning" to "secondary"
+      case "info": default: return "default"; // Changed from "secondary" to "default"
     }
   };
 
