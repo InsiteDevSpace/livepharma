@@ -94,7 +94,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        'dm-sans': ["'DM Sans'", "Roboto", "sans-serif"],
       },
     },
   },

@@ -7,7 +7,7 @@ const Index = () => {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    document.title = "JEE - LIVEPHARMA";
+    document.title = "LIVEPHARMA";
   }, []);
 
   // Redirect to dashboard if authenticated, otherwise to login
