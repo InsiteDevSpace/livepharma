@@ -37,7 +37,7 @@ const Navbar = ({ toggleSidebar }: NavbarProps) => {
           
           <div className="hidden md:block">
             <h1 className="text-xl font-semibold text-gray-800">
-              JEE - LIVEPHARMA
+              LIVEPHARMA
             </h1>
           </div>
         </div>

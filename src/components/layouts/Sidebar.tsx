@@ -90,7 +90,7 @@ const Sidebar = ({ open, setOpen }: SidebarProps) => {
 
           <div className="p-4 border-t border-gray-200">
             <div className="text-xs text-gray-500">
-              <p>JEE - LIVEPHARMA</p>
+              <p>LIVEPHARMA</p>
               <p>Version 1.0.0</p>
             </div>
           </div>
