@@ -38,7 +38,7 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   
   useEffect(() => {
     // Check localStorage for saved user
@@ -46,19 +46,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-    setIsLoading(false);
   }, []);
 
   const login = async (email: string, password: string, remember: boolean) => {
     setIsLoading(true);
     
-    // This would be an API call in a real app
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // This is a simple mock login that always succeeds
+    // In a real app, this would check credentials with a backend
+    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API delay
     
-    // Mock user data
+    // Mock user data - will work with ANY email and password
     const mockUser: User = {
       id: '1',
-      name: 'John Doe',
+      name: 'Pharmacy User',
       email,
       role: 'admin',
       pharmacyName: 'JEE Pharmacy'
@@ -77,7 +77,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     
     // This would be an API call in a real app
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     // Mock user data
     const mockUser: User = {
@@ -101,7 +101,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const forgotPassword = async (email: string) => {
     // This would be an API call in a real app
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
     // Success is assumed
   };
 

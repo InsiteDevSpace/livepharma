@@ -20,6 +20,7 @@ import Notifications from "./pages/Notifications";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 // Layout Components
 import AppLayout from "./components/layouts/AppLayout";
@@ -37,6 +38,9 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Root Route */}
+              <Route path="/" element={<Index />} />
+              
               {/* Auth Routes */}
               <Route element={<AuthLayout />}>
                 <Route path="/login" element={<Login />} />
@@ -55,8 +59,7 @@ const App = () => (
                 <Route path="/settings" element={<Settings />} />
               </Route>
 
-              {/* Redirect & 404 */}
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              {/* 404 */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

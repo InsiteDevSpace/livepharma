@@ -19,8 +19,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.string().min(1, "Email is required"),
+  password: z.string().min(1, "Password is required"),
   remember: z.boolean().default(false),
 });
 
@@ -34,9 +34,9 @@ const Login = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
-      remember: false,
+      email: "user@example.com",
+      password: "password",
+      remember: true,
     },
   });
 
@@ -58,6 +58,9 @@ const Login = () => {
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
         <p className="text-gray-600 mt-1">Sign in to your account</p>
+        <p className="text-sm text-gray-500 mt-2">
+          (Any email and password will work)
+        </p>
       </div>
 
       <Form {...form}>
